@@ -12,7 +12,7 @@ class DataIngestion:
     def download_data(self):
         logging.info("Starting data download...")
         if not os.path.exists(self.config.local_data_file):
-            os.makedirs(os.path.dirname(self.config.local_data_file), exist_ok=True)
+            # os.makedirs(os.path.dirname(self.config.local_data_file), exist_ok=True)
             filename, _ = request.urlretrieve(
                 url = self.config.source_URL,
                 filename = self.config.local_data_file)
