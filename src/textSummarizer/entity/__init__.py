@@ -37,3 +37,6 @@ class ModelEvaluationConfig:
     model_path: Path
     tokenizer_path: Path
     metric_file_name: Path
+    length_penalty: float
+    num_beams: int
+    max_length: int

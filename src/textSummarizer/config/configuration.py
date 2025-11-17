@@ -60,6 +60,7 @@ class ConfigurationManager:
 
     def get_model_evaluation_config(self) -> ModelEvaluationConfig:
         config = self.config.model_evaluation
+        params = self.params.PredictionParams
 
         create_directories([Path(config.root_dir)])
 
@@ -68,7 +69,11 @@ class ConfigurationManager:
             data_path=Path(config.data_path),
             model_path=Path(config.model_path),
             tokenizer_path=Path(config.tokenizer_path),
-            metric_file_name=Path(config.metric_file_name)
+            metric_file_name=Path(config.metric_file_name),
+            length_penalty=params.length_penalty,
+            num_beams=params.num_beams,
+            max_length=params.max_length
+
         )
 
         return model_evaluation_config

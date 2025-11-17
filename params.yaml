@@ -7,3 +7,8 @@ TrainingArguments:
   eval_steps: 500
   save_steps: 1e6
   gradient_accumulation_steps: 16
+
+PredictionParams:
+  length_penalty: 2.0
+  num_beams: 4
+  max_length: 142
