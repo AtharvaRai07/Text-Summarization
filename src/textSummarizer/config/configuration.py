@@ -1,6 +1,6 @@
 from src.textSummarizer.constants import *
 from src.textSummarizer.utils.common import read_yaml, create_directories
-from src.textSummarizer.entity import DataIngestionConfig, DataTransformationConfig, ModelTraineConfig
+from src.textSummarizer.entity import DataIngestionConfig, DataTransformationConfig, ModelTraineConfig, ModelEvaluationConfig
 from pathlib import Path
 
 
@@ -57,3 +57,18 @@ class ConfigurationManager:
         )
 
         return model_trainer_config
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+
+        create_directories([Path(config.root_dir)])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+            model_path=Path(config.model_path),
+            tokenizer_path=Path(config.tokenizer_path),
+            metric_file_name=Path(config.metric_file_name)
+        )
+
+        return model_evaluation_config
